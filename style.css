@@ -1,0 +1,398 @@
+/* أساسيات الصفحة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* الهيدر */
+header {
+    background: linear-gradient(to right, #2c3e50, #4a6491);
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+header .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.category-selection {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.category-card {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    border: 2px solid #eaeaea;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* في قسم الأسئلة الخاطئة - إضافة */
+.wrong-answers-list {
+    margin-top: 30px;
+    text-align: right;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.wrong-answer-item {
+    background: #f8d7da;
+    border: 1px solid #dc3545;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: #4a6491;
+}
+
+.category-card i {
+    font-size: 2.5rem;
+    color: #4a6491;
+    margin-bottom: 15px;
+}
+
+.category-card h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.category-card .question-count {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* شريط الإحصائيات */
+.stats-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 25px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+    color: #555;
+}
+
+/* بطاقة السؤال */
+.question-card {
+    padding: 30px;
+    display: none;
+}
+
+.question-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed #eaeaea;
+}
+
+#questionAr {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    min-height: 70px;
+}
+
+#questionDe {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    font-style: italic;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    border-right: 5px solid #3498db;
+    min-height: 80px;
+}
+
+/* الخيارات */
+.options-container {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 25px;
+    min-height: 280px;
+}
+
+.option {
+    padding: 18px 20px;
+    background-color: #f1f5fd;
+    border: 2px solid #d1d9e6;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.option:hover:not(.disabled) {
+    background-color: #e3eaf9;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.option.correct {
+    background-color: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+}
+
+.option.wrong {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
+}
+
+.option.disabled {
+    cursor: not-allowed;
+    opacity: 0.9;
+}
+
+.option-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background-color: #4a6491;
+    color: white;
+    border-radius: 50%;
+    margin-left: 15px;
+    flex-shrink: 0;
+    font-weight: bold;
+}
+
+/* التعليق على الإجابة */
+.feedback {
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: #fff3cd;
+    border-right: 5px solid #ffc107;
+    color: #856404;
+    font-size: 1rem;
+    display: none;
+    min-height: 80px;
+}
+
+.feedback.show {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* أزرار التحكم */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap: 15px;
+}
+
+button {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-next {
+    background: linear-gradient(to right, #27ae60, #2ecc71);
+    color: white;
+    flex: 1;
+}
+
+.btn-next:hover {
+    background: linear-gradient(to right, #219653, #27ae60);
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+}
+
+.btn-hint {
+    background: linear-gradient(to right, #2980b9, #3498db);
+    color: white;
+    flex: 1;
+}
+
+.btn-hint:hover {
+    background: linear-gradient(to right, #1c6ea4, #2980b9);
+    box-shadow: 0 5px 15px rgba(41, 128, 185, 0.4);
+}
+
+.btn-finish {
+    background: linear-gradient(to right, #e74c3c, #c0392b);
+    color: white;
+    flex: 1;
+}
+
+.btn-finish:hover {
+    background: linear-gradient(to right, #c0392b, #a93226);
+    box-shadow: 0 5px 15px rgba(192, 57, 43, 0.4);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* شاشة النتائج */
+.results-screen {
+    padding: 40px;
+    display: none;
+    text-align: center;
+}
+
+.results-card {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.score-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 30px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.wrong-answers-list {
+    margin-top: 30px;
+    text-align: right;
+}
+
+.wrong-answer-item {
+    background: #f8d7da;
+    border: 1px solid #dc3545;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+/* تصميم متجاوب */
+@media (max-width: 768px) {
+    .container {
+        border-radius: 15px;
+    }
+
+    .category-selection {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    #questionAr {
+        font-size: 1.3rem;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .option {
+        padding: 15px;
+        font-size: 1rem;
+    }
+}
+/* إضافة أنماط للنتائج */
+.score-circle {
+    box-shadow: 0 10px 30px rgba(39, 174, 96, 0.3);
+    border: 5px solid white;
+}
+
+.wrong-answer-item p {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.correct-sample {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.wrong-sample {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* تحسين شريط التمرير */
+.category-selection::-webkit-scrollbar {
+    width: 8px;
+}
+
+.category-selection::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.category-selection::-webkit-scrollbar-thumb {
+    background: #4a6491;
+    border-radius: 10px;
+}
+
+.category-selection::-webkit-scrollbar-thumb:hover {
+    background: #2c3e50;
+}

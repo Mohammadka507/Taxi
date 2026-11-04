@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام اختبارات رخصة التاكسي - فيينا</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- في header -->
+<header>
+    <h1><i class="fas fa-taxi"></i> نظام اختبارات رخصة التاكسي - فيينا</h1>
+    <p class="subtitle">اختبارات منفصلة لكل موضوع - 400+ سؤالاً مع تقرير النتائج التفصيلي</p>
+</header>
+
+        <!-- شاشة اختيار نوع الاختبار -->
+        <div id="categorySelection" class="category-selection">
+            <!-- سيتم ملؤها بواسطة الجافاسكريبت -->
+        </div>
+
+        <!-- شاشة الاختبار -->
+        <div id="testScreen" class="question-card">
+            <div class="stats-bar">
+                <span id="questionCounter">السؤال 0 من 0</span>
+                <span id="score">الإجابات الصحيحة: 0</span>
+                <span id="categoryName">النوع: جاري التحميل...</span>
+            </div>
+
+            <div class="question-header">
+                <h2 id="questionAr">جاري تحميل الأسئلة...</h2>
+                <hr>
+                <p id="questionDe">Fragen werden geladen...</p>
+            </div>
+
+            <div class="options-container" id="optionsContainer">
+                <!-- الخيارات سيتم إضافتها هنا -->
+            </div>
+
+            <div class="feedback" id="feedback">
+                <!-- التعليق على الإجابة سيظهر هنا -->
+            </div>
+
+            <div class="controls">
+                <button id="showAnswerBtn" class="btn-hint">
+                    <i class="fas fa-lightbulb"></i> أظهر الإجابة
+                </button>
+                <button id="nextBtn" class="btn-next">
+                    <i class="fas fa-forward"></i> السؤال التالي
+                </button>
+                <button id="finishTestBtn" class="btn-finish">
+                    <i class="fas fa-flag-checkered"></i> إنهاء الاختبار
+                </button>
+            </div>
+        </div>
+
+        <!-- شاشة النتائج -->
+        <div id="resultsScreen" class="results-screen">
+            <div class="results-card">
+                <h2><i class="fas fa-chart-bar"></i> نتائج الاختبار</h2>
+                <div class="score-circle">
+                    <span id="finalScore">0%</span>
+                    <small id="scoreText">0/0</small>
+                </div>
+                <h3 id="resultCategoryName">المستشفيات</h3>
+                <p id="resultMessage">رسالة النتيجة ستظهر هنا...</p>
+                
+                <div class="wrong-answers-list" id="wrongAnswersList">
+                    <!-- الأسئلة الخاطئة ستظهر هنا -->
+                </div>
+                
+                <div class="controls">
+                    <button id="restartTestBtn" class="btn-next">
+                        <i class="fas fa-redo"></i> إعادة الاختبار
+                    </button>
+                    <button id="backToCategoriesBtn" class="btn-hint">
+                        <i class="fas fa-list"></i> العودة للقائمة
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
